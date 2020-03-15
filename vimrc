@@ -1,4 +1,4 @@
-" Comments in Vimscript start with a `"`.
+" Comments in Vimscript start with a ".
 
 " Vim-Plug
 " PlugInstall  	Install plugins
@@ -6,6 +6,8 @@
 " PlugClean 	Remove unlisted plugins (bang version will clean without prompt)
 " PlugUpgrade	Upgrade vim-plug itself
 " PlugStatus	Check the status of plugins
+
+" Autoinstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -81,13 +83,13 @@ nnoremap <Leader>f :NERDTreeFind<CR>
 
 " end
 
-" Vim is based on Vi. Setting `nocompatible` switches from the default
+" Vim is based on Vi. Setting nocompatible switches from the default
 " Vi-compatibility mode and enables useful Vim functionality. This
 " configuration option turns out not to be necessary for the file named
 " '~/.vimrc', because Vim automatically enters nocompatible mode if that file
 " is present. But we're including it here just in case this config file is
-" loaded some other way (e.g. saved as `foo`, and then Vim started with
-" `vim -u foo`).
+" loaded some other way (e.g. saved as foo, and then Vim started with
+" vim -u foo).
 set nocompatible
 
 " Turn on syntax highlighting.
@@ -127,8 +129,8 @@ set backspace=indent,eol,start
 
 " By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
 " shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
+" forgetting about unsaved changes and then quitting e.g. via :qa!. We find
+" hidden buffers helpful enough to disable this protection. See :help hidden
 " for more information on this.
 set hidden
 
@@ -238,7 +240,8 @@ set splitright
 
 "" Set list to see tabs and non-breakable spaces
 "set listchars=tab:>>,nbsp:~ 
-"
+
+" Allow local customization in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
