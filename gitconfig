@@ -6,6 +6,8 @@
 	conflictstyle = diff3
 [diff]
 	tool = vimdiff
+[core]
+	excludesfile = ~/.gitignore_global
 
 # Allow local customizations in the .gitconfig_local file
 [include]
