@@ -7,6 +7,7 @@
 
 - link:
     ~/.dotfiles: ''
+    ~/.gitconfig:
     ~/.tmux.conf:
     ~/.vimrc:
     ~/.zimrc:
@@ -16,6 +17,3 @@
 
 - shell:
   - git submodule update --init --recursive
-  #- git submodule sync --recursive
-  # the following have to run after linking ~/.gitconfig
-  #- git update-submodules
