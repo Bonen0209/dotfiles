@@ -239,7 +239,7 @@ set splitright
 "set wildmenu
 
 "" Set list to see tabs and non-breakable spaces
-"set listchars=tab:>>,nbsp:~ 
+"set listchars=tab:>>,nbsp:~
 
 " Allow local customization in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
