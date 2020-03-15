@@ -1,5 +1,7 @@
-# Fix Homebrew Vim
-export LC_ALL=en_US.UTF-8
+# Allow local customizations in the ~/.zshrc_local_before file
+if [ -f ~/.zshrc_local_before ]; then
+    source ~/.zshrc_local_before
+fi
 
 # Fix Vim in Tmux
 export TERM="screen-256color"
@@ -134,3 +136,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# Allow local customizations in the ~/.zshrc_local_after file
+if [ -f ~/.zshrc_local_after ]; then
+    source ~/.zshrc_local_after
+fi
