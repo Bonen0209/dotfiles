@@ -1,20 +1,7 @@
-Dotfiles Template
+Bo-Run's Dotfiles
 =================
 
 This is a template repository for bootstrapping your dotfiles with [Dotbot][dotbot].
-
-To get started, you can [create a new repository from this template][template]
-(or you can [fork][fork] this repository, if you prefer). You can probably
-delete this README and rename your version to something like just `dotfiles`.
-
-In general, you should be using symbolic links for everything, and using git
-submodules whenever possible.
-
-To keep submodules at their proper versions, you could include something like
-`git submodule update --init --recursive` in your `install.conf.yaml`.
-
-To upgrade your submodules to their latest versions, you could periodically run
-`git submodule update --init --remote`.
 
 Inspiration
 -----------
@@ -36,6 +23,18 @@ And there are about [700 more here][dotbot-users].
 
 If you're using Dotbot and you'd like to include a link to your dotfiles here
 as an inspiration to others, please submit a pull request.
+
+Zim Installation
+----------------
+Installing Zim is easy:
+
+  * With curl:
+
+          curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+  
+  * With wget:
+
+          wget -nv -O - https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
 License
 -------
