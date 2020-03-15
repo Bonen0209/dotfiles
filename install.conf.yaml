@@ -1,3 +1,21 @@
-- clean: []
-- link: {}
-- shell: []
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.tmux.conf:
+    ~/.vimrc:
+    ~/.zimrc:
+    ~/.zshrc:
+    ~/.zlogin:
+    ~/.zshenv:
+
+- shell:
+  - git submodule update --init --recursive
+  #- git submodule sync --recursive
+  # the following have to run after linking ~/.gitconfig
+  #- git update-submodules
