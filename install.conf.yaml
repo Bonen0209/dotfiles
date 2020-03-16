@@ -15,6 +15,7 @@
     ~/.zshrc:
     ~/.zlogin:
     ~/.zshenv:
+    ~/.zim/modules/steeef/steeef.zsh-theme: 'bonen.zsh-theme'
 
 - shell:
   - git submodule update --init --recursive
