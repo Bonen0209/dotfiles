@@ -32,7 +32,7 @@ endif
 Plug 'deoplete-plugins/deoplete-jedi'
 
 " Syntastic
-"Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
@@ -71,15 +71,6 @@ colorscheme gruvbox
 " NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
-
-" Syntastic (slow)
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 
 " end
 
@@ -205,31 +196,6 @@ set scrolloff=10
 " Split in a natural way
 set splitbelow
 set splitright
-
-" Vim can autodetect this based on $TERM (e.g. 'xterm-256color')
-" but it can be set to force 256 colors
-" set t_Co=256
-" if has('gui_running')
-"     colorscheme solarized
-"     let g:lightline = {'colorscheme': 'solarized'}
-" elseif &t_Co < 256
-"     colorscheme default
-"     set nocursorline " looks bad in this mode
-" else
-"     set background=dark
-"     let g:solarized_termcolors=256 " instead of 16 color with mapping in terminal
-"     colorscheme solarized
-"     
-"     " Customized colors
-"     highlight SignColumn ctermbg=234
-"     highlight StatusLine cterm=bold ctermfg=245 ctermbg=235
-"     highlight StatusLineNC cterm=bold ctermfg=245 ctermbg=235
-"     let g:lightline = {'colorscheme': 'dark'}
-"     highlight SpellBad cterm=underline
-" 
-"     " Patches
-"     highlight CursorLineNr cterm=NONE
-" endif
 
 "" Enable file type detection
 "filetype plugin indent on
