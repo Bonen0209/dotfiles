@@ -30,7 +30,8 @@ setopt HIST_IGNORE_ALL_DUPS
 #
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
+bindkey -v
+KEYTIMEOUT=1
 
 # Prompt for spelling correction of commands.
 #setopt CORRECT
