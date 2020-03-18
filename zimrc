@@ -13,6 +13,8 @@
 zmodule environment
 # Provides handy git aliases and functions.
 zmodule git
+# Provides handy brew aliases
+zmodule homebrew
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.
