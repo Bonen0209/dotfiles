@@ -31,8 +31,11 @@ endif
 " Python autocomplete
 Plug 'deoplete-plugins/deoplete-jedi'
 
-" Syntastic
-Plug 'scrooloose/syntastic'
+"" Syntastic
+"Plug 'scrooloose/syntastic'
+
+" ALE
+Plug 'dense-analysis/ale'
 
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
@@ -71,6 +74,9 @@ colorscheme gruvbox
 " NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
+
+" ALE
+nnoremap <Leader>m :ALEToggle<CR>
 
 " end
 
@@ -139,6 +145,10 @@ set incsearch
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+
+" Unbind some key bindings for tmux
+map <C-a> <Nop>
+map <C-x> <Nop>
 
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
