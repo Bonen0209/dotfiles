@@ -31,14 +31,17 @@ endif
 " Python autocomplete
 Plug 'deoplete-plugins/deoplete-jedi'
 
-" Syntastic
-Plug 'scrooloose/syntastic'
+" ALE
+Plug 'dense-analysis/ale'
 
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
 " NERDTree
 Plug 'preservim/nerdtree'
+
+" Ctrlp
+Plug 'kien/ctrlp.vim'
 
 " Ack
 "Plug 'mileszs/ack.vim'
@@ -58,19 +61,26 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1 
 
 " GruvBox
-"let g:solarized_termcolors=256
 let g:gruvbox_termcolors=256
 if has('gui_running')
     set background=light
 else
     set background=dark
 endif
-"colorscheme solarized
 colorscheme gruvbox
 
 " NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+
+" Ctrlp
+nnoremap ; :CtrlPBuffer<CR>
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_show_hidden = 1
+
+" ALE
+nnoremap <Leader>m :ALEToggle<CR>
 
 " end
 
@@ -139,6 +149,10 @@ set incsearch
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+
+" Unbind some key bindings for tmux
+map <C-a> <Nop>
+map <C-x> <Nop>
 
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
