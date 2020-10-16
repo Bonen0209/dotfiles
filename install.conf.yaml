@@ -16,6 +16,7 @@
     ~/.zlogin:
     ~/.zshenv:
     ~/.zim/modules/steeef/steeef.zsh-theme: 'bonen.zsh-theme'
+    ~/.vim/coc-settings.json: 'coc-settings.json'
 
 - shell:
   - git submodule update --init --recursive
