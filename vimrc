@@ -19,23 +19,8 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 
-" Deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
 " Coc
 Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
-
-" Python autocomplete
-Plug 'deoplete-plugins/deoplete-jedi'
-
-" ALE
-Plug 'dense-analysis/ale'
 
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
@@ -63,9 +48,6 @@ call plug#end()
 
 " Plugins settings start
 
-" Acivate Deoplete
-let g:deoplete#enable_at_startup = 1 
-
 " Coc
 "Use L to show documentation in preview window.
 nnoremap <silent> L :call <SID>show_documentation()<CR>
@@ -79,10 +61,8 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Mappings for CoCList
-" Manage extensions.
+" Mappings manage extensions for CoCList
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-
 
 " GruvBox
 let g:gruvbox_termcolors=256
@@ -110,9 +90,6 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" ALE
-nnoremap <Leader>m :ALEToggle<CR>
 
 " Plugins settings end
 
