@@ -28,6 +28,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+" Coc
+Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
+
 " Python autocomplete
 Plug 'deoplete-plugins/deoplete-jedi'
 
@@ -44,7 +47,10 @@ Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
 
 " Ack
-"Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
+
+" Fugitive
+Plug 'tpope/vim-fugitive'
 
 " GruvBox
 Plug 'morhetz/gruvbox'
@@ -60,12 +66,30 @@ call plug#end()
 " Acivate Deoplete
 let g:deoplete#enable_at_startup = 1 
 
+" Coc
+"Use L to show documentation in preview window.
+nnoremap <silent> L :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Mappings for CoCList
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+
+
 " GruvBox
 let g:gruvbox_termcolors=256
 if has('gui_running')
-    set background=light
+  set background=light
 else
-    set background=dark
+  set background=dark
 endif
 colorscheme gruvbox
 
@@ -79,10 +103,18 @@ nnoremap ; :CtrlPBuffer<CR>
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_show_hidden = 1
 
+" Ack
+command -nargs=+ Gag Gcd | Ack! <args>
+nnoremap K :Gag "\b<C-R><C-W>\b"<CR>:cw<CR>
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " ALE
 nnoremap <Leader>m :ALEToggle<CR>
 
-" end
+" Plugins settings end
 
 " Vim is based on Vi. Setting nocompatible switches from the default
 " Vi-compatibility mode and enables useful Vim functionality. This
@@ -199,9 +231,9 @@ set softtabstop=4
 
 " Highlight current line, but only in active window
 augroup CursorLineOnlyInActiveWindow
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
 augroup END
 
 " Show lines above and below cursor (when possible)
@@ -224,5 +256,5 @@ set splitright
 " Allow local customization in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
-    source $LOCALFILE
+  source $LOCALFILE
 endif
