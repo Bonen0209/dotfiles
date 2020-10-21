@@ -25,6 +25,9 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
+" Incsearch
+Plug 'haya14busa/incsearch.vim'
+
 " NERDTree
 Plug 'preservim/nerdtree'
 
@@ -36,6 +39,9 @@ Plug 'mileszs/ack.vim'
 
 " Fugitive
 Plug 'tpope/vim-fugitive'
+
+" Gundo
+Plug 'sjl/gundo.vim'
 
 " GruvBox
 Plug 'morhetz/gruvbox'
@@ -49,20 +55,22 @@ call plug#end()
 " Plugins settings start
 
 " Coc
-"Use L to show documentation in preview window.
-nnoremap <silent> L :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+let g:coc_global_extensions = [
+  \'coc-snippets',
+  \'coc-yaml',
+  \'coc-tsserver',
+  \'coc-python',
+  \'coc-json',
+  \'coc-clangd'
+  \]
 
 " Mappings manage extensions for CoCList
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+
+" Incsearch
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " GruvBox
 let g:gruvbox_termcolors=256
@@ -89,6 +97,12 @@ nnoremap K :Gag "\b<C-R><C-W>\b"<CR>:cw<CR>
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
   let g:ackprg = 'ag --vimgrep'
+endif
+
+" Gundo
+nnoremap <Leader>u :GundoToggle<CR>
+if has('python3')
+  let g:gundo_prefer_python3 = 1
 endif
 
 " Plugins settings end
