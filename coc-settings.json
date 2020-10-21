@@ -1,4 +1,3 @@
 {
-    "python.pythonPath": "~/.pyenv/shims/python",
-    "python.jediEnabled": false
+    "python.pythonPath": "${env:PYENV_VIRTUAL_ENV}"
 }
