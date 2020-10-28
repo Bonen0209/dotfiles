@@ -25,8 +25,14 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
+" Easymotion
+Plug 'easymotion/vim-easymotion'
+
 " Incsearch
 Plug 'haya14busa/incsearch.vim'
+
+" Incsearch Easymotion
+Plug 'haya14busa/incsearch-easymotion.vim'
 
 " NERDTree
 Plug 'preservim/nerdtree'
@@ -64,13 +70,18 @@ let g:coc_global_extensions = [
   \'coc-clangd'
   \]
 
-" Mappings manage extensions for CoCList
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Easymotion
+map <Space> <Plug>(easymotion-prefix)
 
 " Incsearch
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" Incsearch Easymotion
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
 
 " GruvBox
 let g:gruvbox_termcolors=256
