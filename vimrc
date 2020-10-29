@@ -25,6 +25,9 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
+" Surround
+Plug 'tpope/vim-surround'
+
 " Easymotion
 Plug 'easymotion/vim-easymotion'
 
@@ -52,6 +55,9 @@ Plug 'sjl/gundo.vim'
 " GruvBox
 Plug 'morhetz/gruvbox'
 
+" Lightline
+Plug 'itchyny/lightline.vim'
+
 " Show marks
 Plug 'kshenoy/vim-signature'
 
@@ -69,6 +75,10 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-clangd'
   \]
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Easymotion
 map <Space> <Plug>(easymotion-prefix)
@@ -83,12 +93,14 @@ map z/ <Plug>(incsearch-easymotion-/)
 map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
 
-" GruvBox
+" GruvBox and Lightline
 let g:gruvbox_termcolors=256
 if has('gui_running')
   set background=light
+  let g:lightline = {'colorscheme': 'solarized'}
 else
   set background=dark
+  let g:lightline = {'colorscheme': 'gruvbox'}
 endif
 colorscheme gruvbox
 
