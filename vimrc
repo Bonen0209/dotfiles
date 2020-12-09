@@ -20,10 +20,13 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 
 " Coc
-Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Vimtex
 Plug 'lervag/vimtex'
+
+" Markdown Preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
@@ -83,6 +86,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Markdown Preview
+let g:mkdp_refresh_slow = 1
+let g:mkdp_markdown_css = './css/github-markdown.css'
 
 " Easymotion
 map <Space> <Plug>(easymotion-prefix)
