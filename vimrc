@@ -22,6 +22,9 @@ call plug#begin('~/.vim/plugged')
 " Coc
 Plug 'neoclide/coc.nvim', { 'branch': 'release'  }
 
+" Vimtex
+Plug 'lervag/vimtex'
+
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
@@ -69,6 +72,7 @@ call plug#end()
 " Coc
 let g:coc_global_extensions = [
   \'coc-snippets',
+  \'coc-vimtex',
   \'coc-yaml',
   \'coc-tsserver',
   \'coc-python',
