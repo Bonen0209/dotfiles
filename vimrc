@@ -64,6 +64,9 @@ Plug 'morhetz/gruvbox'
 " Lightline
 Plug 'itchyny/lightline.vim'
 
+" Limelight
+Plug 'junegunn/limelight.vim'
+
 " Show marks
 Plug 'kshenoy/vim-signature'
 
@@ -114,6 +117,9 @@ else
   let g:lightline = {'colorscheme': 'gruvbox'}
 endif
 colorscheme gruvbox
+
+" Limelight
+let g:limelight_conceal_ctermfg = 'gray'
 
 " NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
