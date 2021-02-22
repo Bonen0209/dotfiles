@@ -26,7 +26,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'lervag/vimtex'
 
 " Markdown Preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
@@ -81,7 +81,7 @@ let g:coc_global_extensions = [
   \'coc-vimtex',
   \'coc-yaml',
   \'coc-tsserver',
-  \'coc-python',
+  \'coc-pyright',
   \'coc-json',
   \'coc-clangd'
   \]
