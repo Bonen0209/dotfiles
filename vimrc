@@ -47,7 +47,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'preservim/nerdtree'
 
 " Ctrlp
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Ack
 Plug 'mileszs/ack.vim'
