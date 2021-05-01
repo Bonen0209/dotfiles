@@ -7,6 +7,11 @@
 " PlugUpgrade	Upgrade vim-plug itself
 " PlugStatus	Check the status of plugins
 
+" Coc
+" CocInstall    Install one or more coc extensions
+" CocUpdate     Update all coc extensions
+" CocUninstall  Uninstall a coc extensions
+
 " Autoinstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
