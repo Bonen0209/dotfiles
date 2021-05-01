@@ -1,5 +1,4 @@
 {
-  "python.pythonPath": "${env:PYENV_VIRTUAL_ENV}",
   "python.linting.pylintArgs": [
     "--generated-members=numpy.* ,torch.* ,cv2.* , cv.*"
   ]
