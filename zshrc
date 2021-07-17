@@ -135,7 +135,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
 # Pyenv
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 # Allow local customizations in the ~/.zshrc_local_after file
