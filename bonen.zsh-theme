@@ -5,32 +5,28 @@
 #
 # Requires the `git-info` zmodule to be included in the .zimrc file.
 
-_prompt_steeef_venv() {
-  if [[ -n ${VIRTUAL_ENV} ]] print -n "(%F{blue}${VIRTUAL_ENV:t}%f) "
-}
-
 # use extended color palette if available
 if (( terminfo[colors] >= 256 )); then
-  : ${USER_COLOR=135}
-  : ${HOST_COLOR=166}
-  : ${PWD_COLOR=118}
-  : ${BRANCH_COLOR=81}
-  : ${UNINDEXED_COLOR=166}
-  : ${INDEXED_COLOR=118}
-  : ${UNTRACKED_COLOR=161}
+  if (( ! ${+USER_COLOR} )) typeset -g USER_COLOR=135
+  if (( ! ${+HOST_COLOR} )) typeset -g HOST_COLOR=166
+  if (( ! ${+PWD_COLOR} )) typeset -g PWD_COLOR=118
+  if (( ! ${+BRANCH_COLOR} )) typeset -g BRANCH_COLOR=81
+  if (( ! ${+UNINDEXED_COLOR} )) typeset -g UNINDEXED_COLOR=166
+  if (( ! ${+INDEXED_COLOR} )) typeset -g INDEXED_COLOR=118
+  if (( ! ${+UNTRACKED_COLOR} )) typeset -g UNTRACKED_COLOR=161
 else
-  : ${USER_COLOR=magenta}
-  : ${HOST_COLOR=yellow}
-  : ${PWD_COLOR=green}
-  : ${BRANCH_COLOR=cyan}
-  : ${UNINDEXED_COLOR=yellow}
-  : ${INDEXED_COLOR=green}
-  : ${UNTRACKED_COLOR=red}
+  if (( ! ${+USER_COLOR} )) typeset -g USER_COLOR=magenta
+  if (( ! ${+HOST_COLOR} )) typeset -g HOST_COLOR=yellow
+  if (( ! ${+PWD_COLOR} )) typeset -g PWD_COLOR=green
+  if (( ! ${+BRANCH_COLOR} )) typeset -g BRANCH_COLOR=cyan
+  if (( ! ${+UNINDEXED_COLOR} )) typeset -g UNINDEXED_COLOR=yellow
+  if (( ! ${+INDEXED_COLOR} )) typeset -g INDEXED_COLOR=green
+  if (( ! ${+UNTRACKED_COLOR} )) typeset -g UNTRACKED_COLOR=red
 fi
-: ${UNINDEXED_IND=●}
-: ${INDEXED_IND=●}
-: ${UNTRACKED_IND=●}
-VIRTUAL_ENV_DISABLE_PROMPT=1
+if (( ! ${+UNINDEXED_IND} )) typeset -g UNINDEXED_IND=●
+if (( ! ${+INDEXED_IND} )) typeset -g INDEXED_IND=●
+if (( ! ${+UNTRACKED_IND} )) typeset -g UNTRACKED_IND=●
+typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
 
 setopt nopromptbang prompt{cr,percent,sp,subst}
 
@@ -47,12 +43,12 @@ if (( ${+functions[git-info]} )); then
     zstyle ':zim:git-info:stashed' format '%F{${STASHED_COLOR}}${STASHED_IND}'
   fi
   zstyle ':zim:git-info:keys' format \
-      'prompt' ' on %F{${BRANCH_COLOR}}%b%c%I%i %u%f%S%f%s'
+      'prompt' ' on %F{${BRANCH_COLOR}}%b%c%I%i%u%f%S%f%s'
 
   autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
 fi
 
 PS1='%B
-$(_prompt_steeef_venv)%F{${USER_COLOR}}%n%f at %F{${HOST_COLOR}}%m%f in %F{${PWD_COLOR}}%~%f${(e)git_info[prompt]}%b
+${VIRTUAL_ENV:+"(%F{blue}${VIRTUAL_ENV:t}%f) "}%F{${USER_COLOR}}%n%f at %F{${HOST_COLOR}}%m%f in %F{${PWD_COLOR}}%~%f${(e)git_info[prompt]}%b
 %(!.#.$) '
 unset RPS1
