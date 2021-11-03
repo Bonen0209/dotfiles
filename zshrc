@@ -136,6 +136,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # Pyenv
 eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Allow local customizations in the ~/.zshrc_local_after file
