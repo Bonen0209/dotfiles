@@ -72,6 +72,9 @@ Plug 'itchyny/lightline.vim'
 " Limelight
 Plug 'junegunn/limelight.vim'
 
+" Goyo
+Plug 'junegunn/goyo.vim'
+
 " Show marks
 Plug 'kshenoy/vim-signature'
 
@@ -89,11 +92,18 @@ let g:coc_global_extensions = [
   \'coc-pyright',
   \'coc-json',
   \'coc-clangd'
-  \]
+\]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Vimtex
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'skim'
+let g:vimtex_toc_config = {
+  \'split_pos': ':vert :botright',
+\}
 
 " Markdown Preview
 let g:mkdp_refresh_slow = 1
@@ -125,6 +135,8 @@ colorscheme gruvbox
 
 " Limelight
 let g:limelight_conceal_ctermfg = 'gray'
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
