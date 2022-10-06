@@ -30,9 +30,6 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Vimtex
 Plug 'lervag/vimtex'
 
-" Markdown Preview
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
 " Autopairs
 Plug 'jiangmiao/auto-pairs'
 
@@ -104,10 +101,6 @@ let g:vimtex_view_method = 'skim'
 let g:vimtex_toc_config = {
   \'split_pos': ':vert :botright',
 \}
-
-" Markdown Preview
-let g:mkdp_refresh_slow = 1
-let g:mkdp_markdown_css = './css/github-markdown.css'
 
 " Easymotion
 map <Space> <Plug>(easymotion-prefix)
