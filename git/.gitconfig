@@ -5,9 +5,9 @@
 [merge]
 	conflictstyle = diff3
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 
 # Allow local customizations in the .gitconfig_local file
