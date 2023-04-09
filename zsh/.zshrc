@@ -3,9 +3,6 @@ if [ -f ~/.zshrc_local_before ]; then
     source ~/.zshrc_local_before
 fi
 
-# Fix Vim in Tmux
-export TERM="screen-256color"
-
 # Disable pyenv virtualenv prompt
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
