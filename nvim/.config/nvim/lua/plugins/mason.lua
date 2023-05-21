@@ -17,7 +17,7 @@ mason.setup()
 mason_lspconfig.setup {
   ensure_installed = {
     -- LSP
-    'vimls', 'sumneko_lua', 'yamlls',
+    'vimls', 'lua_ls', 'yamlls',
     'bashls',
     'dockerls',
     'clangd', 'pyright'

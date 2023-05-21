@@ -11,7 +11,7 @@ end
 treesitter_configs.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
-    'vim', 'lua', 'help', 'yaml',
+    'vim', 'lua', 'vimdoc', 'yaml',
     'gitignore',
     'comment',
     'bash',

@@ -4,7 +4,7 @@ if not lspconfig_status_ok then
 end
 
 local servers = {
-  'vimls', 'sumneko_lua', 'yamlls',
+  'vimls', 'lua_ls', 'yamlls',
   'bashls',
   'dockerls',
   'clangd', 'pyright'
