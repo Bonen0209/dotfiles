@@ -17,7 +17,7 @@ treesitter_configs.setup {
     'bash',
     'make', 'dockerfile',
     'latex', 'bibtex',
-    'c', 'python'
+    'c', 'cpp', 'python'
   },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
