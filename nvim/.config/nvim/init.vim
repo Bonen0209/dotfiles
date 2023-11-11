@@ -48,8 +48,8 @@ Plug 'hrsh7th/cmp-nvim-lsp'                 " LSP completion for nvim-cmp
 Plug 'hrsh7th/cmp-omni'                     " Omnifunc completion for nvim-cmp
 
 " Snippets
-Plug 'L3MON4D3/LuaSnip', { 'tag': 'v1.*' }  " LuaSnip
-Plug 'honza/vim-snippets'                   " Useful snippets
+Plug 'L3MON4D3/LuaSnip', { 'tag': 'v2.*', 'do': 'make install_jsregexp' } " LuaSnip
+Plug 'honza/vim-snippets'                                                 " Useful snippets
 
 " Mason
 " Mason                       Opens a graphical status window
@@ -87,12 +87,13 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 
 " Editing related packages
 
 " Surround
 Plug 'kylechui/nvim-surround'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'
@@ -104,7 +105,7 @@ Plug 'ggandor/leap.nvim'
 " Terminal related packages
 
 " Toggleterm
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'akinsho/toggleterm.nvim', { 'tag' : '*' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
