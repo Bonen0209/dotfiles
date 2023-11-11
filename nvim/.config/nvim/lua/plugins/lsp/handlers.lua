@@ -5,8 +5,6 @@ if not cmp_nvim_lsp_status_ok then
   return
 end
 
-M.capabilities = cmp_nvim_lsp.default_capabilities()
-
 M.setup = function()
   local config = {
     -- virtual_text = false,
@@ -28,6 +26,8 @@ M.setup = function()
 --   border = 'rounded',
 -- })
 end
+
+M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 local function lsp_keymaps(bufnr)
   -- Shorten function name
