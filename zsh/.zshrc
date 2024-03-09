@@ -6,6 +6,9 @@ fi
 # Disable pyenv virtualenv prompt
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+# Time to wait for additional characters in a sequence
+KEYTIMEOUT=1
+
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
@@ -28,7 +31,6 @@ setopt HIST_IGNORE_ALL_DUPS
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -v
-KEYTIMEOUT=1
 
 # Prompt for spelling correction of commands.
 #setopt CORRECT
