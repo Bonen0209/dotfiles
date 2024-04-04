@@ -1,0 +1,14 @@
+[code]
+editor = 'nvim'
+lang = 'cpp'
+editor_envs = ['XDG_CONFIG_HOME=~/.leetcode']
+
+[cookies]
+csrf = ''
+session = ''
+
+[storage]
+cache = 'Problems'
+code = 'code'
+root = '~/.leetcode'
+scripts = 'scripts'
