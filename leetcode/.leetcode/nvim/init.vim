@@ -30,6 +30,9 @@ Plug 'nvim-lualine/lualine.nvim'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
+" Gitsigns
+Plug 'lewis6991/gitsigns.nvim'
+
 " Completion related packages
 
 " CMP
@@ -141,6 +144,9 @@ lua require('plugins.lualine')
 
 " Treesitter
 lua require('plugins.treesitter')
+
+" Gitsigns
+lua require('plugins.gitsigns')
 
 " Completion settings
 
