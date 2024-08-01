@@ -20,7 +20,7 @@ mason_lspconfig.setup {
     'vimls', 'lua_ls', 'yamlls',
     'bashls',
     'dockerls',
-    'clangd', 'pyright'
+    'clangd', 'basedpyright', 'ruff'
   }
 }
 -- mason_nvim_dap.setup {

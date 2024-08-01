@@ -7,7 +7,7 @@ local servers = {
   'vimls', 'lua_ls', 'yamlls',
   'bashls',
   'dockerls',
-  'clangd', 'pyright'
+  'clangd', 'basedpyright', 'ruff'
 }
 
 local opts = {}
