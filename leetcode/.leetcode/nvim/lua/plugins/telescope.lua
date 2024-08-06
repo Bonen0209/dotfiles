@@ -10,7 +10,7 @@ telescope.setup {
       prompt_position = 'bottom'
     },
     border = false,
-    path_display = { 'smart' },
+    path_display = { 'smart' }
   },
   pickers = {
     find_files = {
@@ -22,5 +22,5 @@ telescope.setup {
       sort_lastused = true,
       sort_mru = true
     }
-  },
+  }
 }

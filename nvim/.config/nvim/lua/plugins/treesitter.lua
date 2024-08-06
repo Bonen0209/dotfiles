@@ -9,18 +9,18 @@ if not treesitter_configs_status_ok then
 end
 
 treesitter_configs.setup {
-  -- A list of parser names, or "all"
+  -- A list of parser names, or 'all' (the listed parsers MUST always be installed)
   ensure_installed = {
-    'vim', 'lua', 'vimdoc', 'yaml',
+    'vim', 'lua', 'vimdoc', 'comment',
+    'yaml', 'xml',
     'gitignore',
-    'comment',
-    'bash',
-    'make', 'dockerfile',
+    'bash', 'make', 'dockerfile',
     'latex', 'bibtex',
-    'c', 'cpp', 'python'
+    'c', 'cpp',
+    'python'
   },
 
-  -- Install languages synchronously (only applied to `ensure_installed`)
+  -- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
 
 	highlight = {
@@ -31,7 +31,7 @@ treesitter_configs.setup {
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = {'latex'},
+    disable = { 'latex' },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).

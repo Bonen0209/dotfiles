@@ -4,10 +4,11 @@ if not lspconfig_status_ok then
 end
 
 local servers = {
-  'vimls', 'lua_ls', 'yamlls',
-  'bashls',
-  'dockerls',
-  'clangd', 'basedpyright', 'ruff'
+  'vimls', 'lua_ls',
+  'yamlls', 'lemminx',
+  'bashls', 'dockerls',
+  'clangd',
+  'basedpyright', 'ruff'
 }
 
 local opts = {}

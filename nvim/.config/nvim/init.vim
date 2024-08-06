@@ -39,17 +39,16 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'hrsh7th/nvim-cmp'                     " Auto completion engine
 
 " CMP related packages
-Plug 'hrsh7th/cmp-nvim-lua'                 " Nvim lua completion for nvim-cmp
 Plug 'hrsh7th/cmp-buffer'                   " Buffer completion for nvim-cmp
 Plug 'hrsh7th/cmp-path'                     " Path completion for nvim-cmp
-Plug 'hrsh7th/cmp-cmdline'                  " Cmdline completion for nvim-cmp (?)
+Plug 'hrsh7th/cmp-cmdline'                  " Cmdline completion for nvim-cmp
 Plug 'saadparwaiz1/cmp_luasnip'             " LuaSnip completion for nvim-cmp
 Plug 'hrsh7th/cmp-nvim-lsp'                 " LSP completion for nvim-cmp
 Plug 'hrsh7th/cmp-omni'                     " Omnifunc completion for nvim-cmp
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip', { 'tag': 'v2.*', 'do': 'make install_jsregexp' } " LuaSnip
-Plug 'honza/vim-snippets'                                                 " Useful snippets
+Plug 'rafamadriz/friendly-snippets'                                       " Useful snippets
 
 " Mason
 " Mason                       Opens a graphical status window
@@ -61,24 +60,14 @@ Plug 'honza/vim-snippets'                                                 " Usef
 " Mason
 Plug 'williamboman/mason.nvim'              " LSP/DAP/Linters/Formatters Installer
 
+" Other language servers
+Plug 'lervag/vimtex'                        " Latex language server
+
 " Language server protocol related packages
 
 " LSP
 Plug 'neovim/nvim-lspconfig'                " LSP configurations
 Plug 'williamboman/mason-lspconfig.nvim'    " Mason LSP configurations
-Plug 'lervag/vimtex'                        " Latex language server
-
-" " Null-ls
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'jose-elias-alvarez/null-ls.nvim'
-" Plug 'jayp0521/mason-null-ls.nvim'
-
-" Debug adapter protocol related packages
-
-" " DAP
-" Plug 'mfussenegger/nvim-dap'
-" Plug 'jayp0521/mason-nvim-dap.nvim'
-" Plug 'rcarriga/nvim-dap-ui'
 
 " File related packages
 
@@ -87,25 +76,16 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Editing related packages
 
 " Surround
-Plug 'kylechui/nvim-surround'
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'kylechui/nvim-surround', { 'tag' : '*' }
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'
-
-" Leap
-Plug 'tpope/vim-repeat'
-Plug 'ggandor/leap.nvim'
-
-" Terminal related packages
-
-" Toggleterm
-Plug 'akinsho/toggleterm.nvim', { 'tag' : '*' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -197,11 +177,6 @@ lua require('plugins.mason')
 " LSP
 lua require('plugins.lsp')
 
-" Debug adapter protocol related packages
-
-" " DAP
-" lua require('plugins.dap')
-
 " File settings
 
 " Nvim-tree
@@ -217,13 +192,5 @@ lua require('plugins.surround')
 
 " Autopairs
 lua require('plugins.autopairs')
-
-" Leap
-lua require('plugins.leap')
-
-" Terminal settings
-
-" Toggleterm
-lua require('plugins.toggleterm')
 
 " Plugins settings end

@@ -29,13 +29,10 @@ keymap('v', '>', '>gv', opts)
 -- Plugins
 
 -- Nvim-tree
--- keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 keymap('n', '<leader>n', ':NvimTreeToggle<CR>', opts)
 
 -- Telescope
--- keymap('n', '<leader>ff', ':Telescope find_files<CR>', opts)
 keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)
-keymap('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
--- keymap('n', '<leader>fb', ':Telescope buffers<CR>', opts)
+keymap('n', 'K', ':Telescope grep_string<CR>', opts)
 keymap('n', ';', ':Telescope buffers<CR>', opts)
 keymap('n', '<leader>fh', ':Telescope help_tags<CR>', opts)

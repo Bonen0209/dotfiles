@@ -3,12 +3,7 @@ if not autopairs_status_ok then
   return
 end
 
-autopairs.setup {
-  check_ts = true,
-  ts_config = {
-    lua = { 'string' }
-  }
-}
+autopairs.setup()
 
 local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 if not cmp_autopairs_status_ok then

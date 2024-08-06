@@ -7,7 +7,7 @@ nvim_tree.setup {
   disable_netrw = true,
   renderer = {
     group_empty = true,
-    highlight_git = true,
+    highlight_git = 'name',
     icons = {
       show = {
         file = false,
@@ -16,7 +16,7 @@ nvim_tree.setup {
         git = false
       },
       glyphs = {
-        symlink = ""
+        symlink = ''
       }
     }
   }

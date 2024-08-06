@@ -41,12 +41,12 @@ Plug 'hrsh7th/nvim-cmp'                     " Auto completion engine
 " CMP related packages
 Plug 'hrsh7th/cmp-buffer'                   " Buffer completion for nvim-cmp
 Plug 'hrsh7th/cmp-path'                     " Path completion for nvim-cmp
-Plug 'hrsh7th/cmp-cmdline'                  " Cmdline completion for nvim-cmp (?)
+Plug 'hrsh7th/cmp-cmdline'                  " Cmdline completion for nvim-cmp
 Plug 'saadparwaiz1/cmp_luasnip'             " LuaSnip completion for nvim-cmp
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip', { 'tag': 'v2.*', 'do': 'make install_jsregexp' } " LuaSnip
-Plug 'honza/vim-snippets'                                                 " Useful snippets
+Plug 'rafamadriz/friendly-snippets'                                       " Useful snippets
 
 " Mason
 " Mason                       Opens a graphical status window
@@ -62,13 +62,13 @@ Plug 'williamboman/mason.nvim'              " LSP/DAP/Linters/Formatters Install
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Editing related packages
 
 " Surround
 Plug 'kylechui/nvim-surround', { 'tag' : '*' }
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'

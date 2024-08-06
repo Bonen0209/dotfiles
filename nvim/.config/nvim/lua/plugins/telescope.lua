@@ -10,17 +10,22 @@ telescope.setup {
       prompt_position = 'bottom'
     },
     border = false,
-    path_display = { 'smart' },
+    path_display = { 'smart' }
   },
   pickers = {
     find_files = {
       follow = true,
       hidden = true
     },
+    grep_string = {
+      word_match = '-w'
+    },
     buffers = {
       ignore_current_buffer = true,
       sort_lastused = true,
       sort_mru = true
     }
-  },
+  }
 }
+
+telescope.load_extension('fzf')
