@@ -4,8 +4,9 @@ lang = 'cpp'
 editor_envs = ['XDG_CONFIG_HOME=~/.leetcode']
 
 [cookies]
-csrf = ''
-session = ''
+csrf = '<your-leetcode-csrf-token>'
+session = '<your-leetcode-session-key>'
+site = 'leetcode.com'
 
 [storage]
 cache = 'Problems'
