@@ -17,6 +17,9 @@ telescope.setup {
       follow = true,
       hidden = true
     },
+    grep_string = {
+      word_match = '-w'
+    },
     buffers = {
       ignore_current_buffer = true,
       sort_lastused = true,
@@ -24,3 +27,5 @@ telescope.setup {
     }
   }
 }
+
+telescope.load_extension('fzf')

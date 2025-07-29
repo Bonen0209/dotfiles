@@ -9,6 +9,7 @@ M.setup = function()
   local config = {
     update_in_insert = true,
     severity_sort = true,
+    virtual_text = true,
   }
 
   vim.diagnostic.config(config)
