@@ -25,9 +25,3 @@ keymap('n', '<C-l>', '<C-w>l', opts)
 -- Stay in indent mode
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
-
--- Plugins
-
--- Telescope
-keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)
-keymap('n', ';', ':Telescope buffers<CR>', opts)

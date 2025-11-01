@@ -1,11 +1,11 @@
 " Vim-plug
-" PlugInstall     Install plugins
-" PlugUpdate  	  Install or update plugins
-" PlugClean 	    Remove unlisted plugins (bang version will clean without prompt)
-" PlugUpgrade	    Upgrade vim-plug itself
-" PlugStatus	    Check the status of plugins
-" PlugDiff        Examine changes from the previous update and the pending changes
-" PlugSnapshot    Generate script for restoring the current snapshot of the plugins
+" PlugInstall [name ...] [#threads]   Install plugins
+" PlugUpdate [name ...] [#threads]    Install or update plugins
+" PlugClean[!]                        Remove unlisted plugins (bang version will clean without prompt)
+" PlugUpgrade                         Upgrade vim-plug itself
+" PlugStatus	                        Check the status of plugins
+" PlugDiff                            Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path]       Generate script for restoring the current snapshot of the plugins
 
 " Autoinstall vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -14,10 +14,16 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Plugins will be downloaded under the specified directory.
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
-" Declare the list of plugins.
+" Make sure you use single quotes
 
 " Visual related packages
 
@@ -27,50 +33,11 @@ Plug 'EdenEast/nightfox.nvim'
 " Lualine
 Plug 'nvim-lualine/lualine.nvim'
 
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
 " Gitsigns
 Plug 'lewis6991/gitsigns.nvim'
 
-" Git-conflict
-Plug 'akinsho/git-conflict.nvim', { 'tag' : '*' }
-
-" Completion related packages
-
-" CMP
-Plug 'hrsh7th/nvim-cmp'                     " Auto completion engine
-
-" CMP related packages
-Plug 'hrsh7th/cmp-buffer'                   " Buffer completion for nvim-cmp
-Plug 'hrsh7th/cmp-path'                     " Path completion for nvim-cmp
-Plug 'hrsh7th/cmp-cmdline'                  " Cmdline completion for nvim-cmp
-Plug 'saadparwaiz1/cmp_luasnip'             " LuaSnip completion for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp'                 " LSP completion for nvim-cmp
-Plug 'hrsh7th/cmp-omni'                     " Omnifunc completion for nvim-cmp
-
-" Snippets
-Plug 'L3MON4D3/LuaSnip', { 'tag': 'v2.*', 'do': 'make install_jsregexp' } " LuaSnip
-Plug 'rafamadriz/friendly-snippets'                                       " Useful snippets
-
-" Mason
-" Mason                       Opens a graphical status window
-" MasonInstall <package>      Installs/reinstalls the provided packages
-" MasonUninstall <package>    Uninstalls the provided packages
-" MasonUninstallAll           Uninstalls all packages
-" MasonLog                    Opens the mason.nvim log file in a new tab window
-
-" Mason
-Plug 'williamboman/mason.nvim'              " LSP/DAP/Linters/Formatters Installer
-
-" Other language servers
-Plug 'lervag/vimtex'                        " Latex language server
-
-" Language server protocol related packages
-
-" LSP
-Plug 'neovim/nvim-lspconfig'                " LSP configurations
-Plug 'williamboman/mason-lspconfig.nvim'    " Mason LSP configurations
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " File related packages
 
@@ -90,8 +57,45 @@ Plug 'kylechui/nvim-surround', { 'tag' : '*' }
 " Autopairs
 Plug 'windwp/nvim-autopairs'
 
-" List ends here. Plugins become visible to Vim after this call.
+" Language server protocol related packages
+
+" Mason
+" Mason                         Opens a graphical status window
+" MasonUpdate                   Updates all managed registries
+" MasonInstall <package> ...    Installs/re-installs the provided packages
+" MasonUninstall <package> ...  Uninstalls the provided packages
+" MasonUninstallAll             Uninstalls all packages
+" MasonLog                      Opens the mason.nvim log file in a new tab window
+
+" Mason
+Plug 'mason-org/mason.nvim'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+
+" Completion related packages
+
+" CMP
+Plug 'hrsh7th/nvim-cmp'
+
+" CMP related packages
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip', { 'tag': 'v2.*', 'do': 'make install_jsregexp' }
+Plug 'rafamadriz/friendly-snippets'
+
+" Call plug#end to update &runtimepath and initialize the plugin system.
+" - It automatically executes `filetype plugin indent on` and `syntax enable`
 call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
 
 " Basic settings
 
@@ -151,7 +155,7 @@ lua require('core.keymaps')
 
 " Plugins settings start
 
-" Visual settings
+" Visual related settings
 
 " Colorscheme
 lua require('core.colorscheme')
@@ -162,28 +166,7 @@ lua require('plugins.lualine')
 " Treesitter
 lua require('plugins.treesitter')
 
-" Gitsigns
-lua require('plugins.gitsigns')
-
-" Git-conflict
-lua require('plugins.git-conflict')
-
-" Completion settings
-
-" CMP
-lua require('plugins.cmp')
-
-" Mason settings
-
-" Mason
-lua require('plugins.mason')
-
-" Language server protocol settings
-
-" LSP
-lua require('plugins.lsp')
-
-" File settings
+" File related settings
 
 " Nvim-tree
 lua require('plugins.nvim-tree')
@@ -191,12 +174,25 @@ lua require('plugins.nvim-tree')
 " Telescope
 lua require('plugins.telescope')
 
-" Editing settings
+" Editing related settings
 
 " Surround
 lua require('plugins.surround')
 
 " Autopairs
 lua require('plugins.autopairs')
+
+" Language server protocol related settings
+
+" Mason
+lua require('plugins.mason')
+
+" LSP
+lua require('plugins.lsp')
+
+" Completion related settings
+
+" CMP
+lua require('plugins.cmp')
 
 " Plugins settings end

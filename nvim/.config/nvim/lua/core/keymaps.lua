@@ -25,14 +25,3 @@ keymap('n', '<C-l>', '<C-w>l', opts)
 -- Stay in indent mode
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
-
--- Plugins
-
--- Nvim-tree
-keymap('n', '<Space>e', ':NvimTreeToggle<CR>', opts)
-
--- Telescope
-keymap('n', '<C-p>', ':Telescope find_files<CR>', opts)
-keymap('n', 'K', ':Telescope grep_string<CR>', opts)
-keymap('n', ';', ':Telescope buffers<CR>', opts)
-keymap('n', '<Leader>fh', ':Telescope help_tags<CR>', opts)

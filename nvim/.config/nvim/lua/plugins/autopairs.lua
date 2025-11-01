@@ -1,12 +1,12 @@
-local autopairs_status_ok, autopairs = pcall(require, 'nvim-autopairs')
-if not autopairs_status_ok then
+local nvim_autopairs_status_ok, nvim_autopairs = pcall(require, 'nvim-autopairs')
+if not nvim_autopairs_status_ok then
   return
 end
 
-autopairs.setup()
+nvim_autopairs.setup()
 
-local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
-if not cmp_autopairs_status_ok then
+local nvim_autopairs_completion_cmp_status_ok, nvim_autopairs_completion_cmp = pcall(require, 'nvim-autopairs.completion.cmp')
+if not nvim_autopairs_completion_cmp_status_ok then
   return
 end
 
@@ -17,5 +17,5 @@ end
 
 cmp.event:on(
   'confirm_done',
-  cmp_autopairs.on_confirm_done()
+  nvim_autopairs_completion_cmp.on_confirm_done()
 )

@@ -29,3 +29,15 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
+
+local telescope_builtin_status_ok, telescope_builtin = pcall(require, 'telescope.builtin')
+if not telescope_builtin_status_ok then
+  return
+end
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap('n', '<C-p>', telescope_builtin.find_files, opts)
+keymap('n', 'K', telescope_builtin.grep_string, opts)
+keymap('n', ';', telescope_builtin.buffers, opts)
