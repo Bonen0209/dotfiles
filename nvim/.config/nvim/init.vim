@@ -37,7 +37,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'romus204/tree-sitter-manager.nvim'
 
 " File related packages
 
