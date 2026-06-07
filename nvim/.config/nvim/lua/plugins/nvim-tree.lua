@@ -3,8 +3,9 @@ if not nvim_tree_status_ok then
   return
 end
 
-vim.g.loaded_netrw       = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
 
 nvim_tree.setup {
   renderer = {
@@ -14,10 +15,11 @@ nvim_tree.setup {
       show = {
         file = false,
         folder = false,
-        folder_arrow = false,
         git = false,
         modified = false,
-        bookmarks = false
+        diagnostics = false,
+        bookmarks = false,
+        folder_arrow = false
       }
     }
   }

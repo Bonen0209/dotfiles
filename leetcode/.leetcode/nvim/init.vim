@@ -37,19 +37,19 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'romus204/tree-sitter-manager.nvim'
 
 " File related packages
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '*' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Editing related packages
 
 " Surround
-Plug 'kylechui/nvim-surround', { 'tag' : '*' }
+Plug 'kylechui/nvim-surround', { 'tag' : 'v4.*' }
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'

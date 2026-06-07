@@ -12,6 +12,5 @@ tree_sitter_manager.setup {
     'c', 'cpp',
     'python',
     'gitignore'
-  },
-  auto_install = true
+  }
 }

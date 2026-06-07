@@ -46,13 +46,13 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '*' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Editing related packages
 
 " Surround
-Plug 'kylechui/nvim-surround', { 'tag' : '*' }
+Plug 'kylechui/nvim-surround', { 'tag' : 'v4.*' }
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'
