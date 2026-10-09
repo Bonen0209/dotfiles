@@ -1,15 +1,15 @@
 [code]
 editor = 'nvim'
+test = true
 lang = 'cpp'
 editor_envs = ['XDG_CONFIG_HOME=~/.leetcode']
 
 [cookies]
-csrf = '<your-leetcode-csrf-token>'
-session = '<your-leetcode-session-key>'
+csrf = ''
+session = ''
 site = 'leetcode.com'
 
 [storage]
-cache = 'Problems'
 code = 'code'
 root = '~/.leetcode'
 scripts = 'scripts'
