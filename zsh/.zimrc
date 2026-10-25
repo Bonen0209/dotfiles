@@ -4,10 +4,9 @@
 # Want to upgrade zimfw to its latest version? Run zimfw upgrade.
 # For more information about the zimfw tool, run zimfw help.
 
-# Start configuration added by Zim install {{{
+# Start configuration added by Zim Framework install {{{
 #
-# This is not sourced during shell startup, and it's only used to configure the
-# zimfw plugin manager.
+# This is not sourced during shell startup and is only used to configure zimfw.
 #
 
 #
@@ -18,23 +17,30 @@
 zmodule environment
 # Provides handy git aliases and functions.
 zmodule git
-# Provides handy brew aliases
+# Sets up the Zsh shell integration for Homebrew and provides handy brew aliases.
 zmodule homebrew
-# Applies correct bindkeys for input events.
+# Applies correct bindkeys for input events. Add one of the following to the
+# beginning of your ~/.zshrc to set your preferred editor keymap to emacs or vi
+# respectively: bindkey -e or bindkey -v
 zmodule input
 # Sets a custom terminal title.
 zmodule termtitle
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
 
+# <-- Normally new modules should be added here. Check each module documentation
+# for any caveats.
+
 #
 # Prompt
 #
 
-# Exposes to prompts how long the last command took to execute, used by asciiship.
+# Exposes how long the last command took to run to prompts.
 zmodule duration-info
-# Exposes git repository status information to prompts, used by asciiship.
+# Exposes git repository status information to prompts.
 zmodule git-info
+# Formats the current working directory for prompts.
+zmodule prompt-pwd
 # A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
 zmodule asciiship
 
@@ -44,20 +50,20 @@ zmodule asciiship
 
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
-# Enables and configures smart and extensive tab completion.
-# completion must be sourced after all modules that add completion definitions.
+# Enables and configures smart and extensive tab completion, must be sourced
+# after all modules that add completion definitions.
 zmodule completion
 
 #
 # Modules that must be initialized last
 #
 
-# Fish-like syntax highlighting for Zsh.
-# zsh-users/zsh-syntax-highlighting must be sourced after completion
+# Fish-like syntax highlighting for Zsh, must be sourced after completion.
 zmodule zsh-users/zsh-syntax-highlighting
-# Fish-like history search (up arrow) for Zsh.
-# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
+# Fish-like history search for Zsh, must be sourced after
+# zsh-users/zsh-syntax-highlighting.
 zmodule zsh-users/zsh-history-substring-search
-# Fish-like autosuggestions for Zsh.
+# Fish-like autosuggestions for Zsh. Add the following to your ~/.zshrc to boost
+# performance: ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zmodule zsh-users/zsh-autosuggestions
-# }}} End configuration added by Zim install
+# }}} End configuration added by Zim Framework install
