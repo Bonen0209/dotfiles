@@ -1,4 +1,1 @@
-setlocal tabstop=2
-setlocal shiftwidth=2
-setlocal softtabstop=2
-lua vim.treesitter.start()
+../../../../../nvim/.config/nvim/after/ftplugin/c.vim

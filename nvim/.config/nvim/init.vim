@@ -3,7 +3,7 @@
 " PlugUpdate [name ...] [#threads]    Install or update plugins
 " PlugClean[!]                        Remove unlisted plugins (bang version will clean without prompt)
 " PlugUpgrade                         Upgrade vim-plug itself
-" PlugStatus	                        Check the status of plugins
+" PlugStatus                          Check the status of plugins
 " PlugDiff                            Examine changes from the previous update and the pending changes
 " PlugSnapshot[!] [output path]       Generate script for restoring the current snapshot of the plugins
 
@@ -52,7 +52,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Editing related packages
 
 " Surround
-Plug 'kylechui/nvim-surround', { 'tag' : 'v4.*' }
+Plug 'kylechui/nvim-surround', { 'tag': 'v4.*' }
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'
@@ -106,7 +106,7 @@ set number
 set relativenumber
 
 " Show lines above and below cursor when possible
-set scrolloff=5 
+set scrolloff=5
 
 " Line break
 set linebreak
@@ -117,14 +117,11 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" Enable visual bell
-set visualbell
-
 " Enable mouse for all modes
 set mouse+=a
 
 " Show matching braces when text indicator is over them
-set showmatch 
+set showmatch
 
 " Disable highlight matches
 set nohlsearch
@@ -140,15 +137,11 @@ set splitright
 " Skip redrawing screen in some cases
 set lazyredraw
 
-" Decent wildmenu
-set wildmenu
+" Command-line completion mode
 set wildmode=list:longest
 
 " Better completion
 set completeopt=menuone,noinsert,noselect
-
-" Set list to see tabs and non-breakable spaces
-set listchars=tab:>>,nbsp:~
 
 " Key mappings
 lua require('core.keymaps')

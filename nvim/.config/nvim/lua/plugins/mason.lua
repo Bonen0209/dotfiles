@@ -11,8 +11,7 @@ if not mason_tool_installer_status_ok then
 end
 
 mason_tool_installer.setup {
-  -- a list of all tools you want to ensure are installed upon
-  -- start
+  -- A list of all tools you want to ensure are installed upon start
   ensure_installed = {
     -- LSP
     'vim-language-server', 'lua-language-server',

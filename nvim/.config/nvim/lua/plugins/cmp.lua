@@ -5,7 +5,7 @@ end
 
 local luasnip_status_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip_status_ok then
-	return
+  return
 end
 
 cmp.setup {
@@ -24,9 +24,9 @@ cmp.setup {
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer' }
+    { name = 'buffer' },
+    { name = 'luasnip' }
   }, {
-    { name = 'luasnip' },
     { name = 'path' }
   })
 }
@@ -52,7 +52,7 @@ cmp.setup.cmdline(':', {
 
 local luasnip_loaders_from_vscode_status_ok, luasnip_loaders_from_vscode = pcall(require, 'luasnip.loaders.from_vscode')
 if not luasnip_loaders_from_vscode_status_ok then
-	return
+  return
 end
 
 luasnip_loaders_from_vscode.lazy_load()

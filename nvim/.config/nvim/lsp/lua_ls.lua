@@ -9,8 +9,8 @@ return {
         -- (see `:h lua-module-load`)
         path = {
           'lua/?.lua',
-          'lua/?/init.lua',
-        },
+          'lua/?/init.lua'
+        }
       },
       -- Make the server aware of Neovim runtime files
       workspace = {

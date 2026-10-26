@@ -1,7 +1,7 @@
 local config = {
   update_in_insert = true,
   severity_sort = true,
-  virtual_text = true,
+  virtual_text = true
 }
 
 vim.diagnostic.config(config)
@@ -15,32 +15,20 @@ local servers = {
   'basedpyright', 'ruff'
 }
 
-for _, server in pairs(servers) do
-  local opts = {
-    on_attach = function(client, bufnr)
-      vim.notify(client.name .. ' starting...')
+vim.lsp.enable(servers)
 
-      local keymap = vim.keymap.set
-      local opts = { noremap = true, silent = true }
-
-      keymap('n', 'gd', vim.lsp.buf.definition, opts)
-      keymap('n', 'gr', vim.lsp.buf.references, opts)
-    end
-  }
-
-  vim.lsp.config(server, opts)
-  vim.lsp.enable(server)
-end
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    vim.notify(client.name .. ' attached...')
+  end
+})
 
 local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not cmp_nvim_lsp_status_ok then
   return
 end
 
-for _, server in pairs(servers) do
-  local opts = {
-    capabilities = cmp_nvim_lsp.default_capabilities()
-  }
-
-  vim.lsp.config(server, opts)
-end
+vim.lsp.config('*', {
+  capabilities = cmp_nvim_lsp.default_capabilities()
+})
