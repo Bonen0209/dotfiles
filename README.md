@@ -1,189 +1,127 @@
 Bo-Run's Dotfiles
 =================
 
-This is a configuration repository for Bo-Run's dotfiles using [GNU Stow][].
+This repository holds the shared parts of Bo-Run's dotfiles and is deployed with
+[GNU Stow][]. Each package below is a top-level directory whose contents mirror
+`$HOME`:
+
+| Package | Configures |
+| --- | --- |
+| `git` | Git |
+| `nvim` | Neovim |
+| `readline` | Readline |
+| `tmux` | tmux |
+| `vim` | Vim |
+| `zsh` | Zsh |
+
+Machine-specific settings live outside this repository. The base configs load
+the following local files by name, if they exist:
+
+| Base config | Loads |
+| --- | --- |
+| `~/.gitconfig` | `~/.gitconfig_local` |
+| `~/.tmux.conf` | `~/.tmux_local.conf` |
+| `~/.zshrc` | `~/.zshrc_local_before`, `~/.zshrc_local_after` |
 
 [GNU Stow]: https://www.gnu.org/software/stow/
 
-GNU Stow Installation
-----------------
-Install GNU Stow:
+Prerequisites
+-------------
 
-  * With homebrew:
+  * GNU Stow
+  * git, curl and unzip
+  * zsh and tmux
+  * Vim 8.0 or later
+  * Neovim 0.12 or later
+  * tree-sitter CLI 0.26.1 or later
+  * A C compiler and make
+  * ripgrep and fd
+  * Python 3.10 or later with venv
+  * Node.js 22.13 or later with npm
 
-    brew install stow 
+### macOS
 
-Zim Installation
-----------------
-Installing Zim is easy:
-
-  * With curl:
-
-          curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-  
-  * With wget:
-
-          wget -nv -O - https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-
-Pyenv Installation
-------------------
-### Basic GitHub Checkout
-
-This will get you going with the latest version of pyenv and make it
-easy to fork and contribute any changes back upstream.
-
-1. **Check out pyenv where you want it installed.**
-   A good place to choose is `$HOME/.pyenv` (but you can install it somewhere else).
-
-        $ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-
-
-2. **Define environment variable `PYENV_ROOT`** to point to the path where
-   pyenv repo is cloned and add `$PYENV_ROOT/bin` to your `$PATH` for access
-   to the `pyenv` command-line utility.
-
-    ```sh
-    $ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
-    $ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
-    ```
-    - **Zsh note**: Modify your `~/.zshrc` file instead of `~/.bash_profile`.
-    - **Ubuntu and Fedora note**: Modify your `~/.bashrc` file instead of `~/.bash_profile`.
-    - **Proxy note**: If you use a proxy, export `http_proxy` and `HTTPS_PROXY` too.
-
-3. **Add `pyenv init` to your shell** to enable shims and autocompletion.
-   Please make sure `eval "$(pyenv init -)"` is placed toward the end of the shell
-   configuration file since it manipulates `PATH` during the initialization.
-    ```sh
-    $ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
-    ```
-    - **Zsh note**: Modify your `~/.zshrc` file instead of `~/.bash_profile`.
-    - **fish note**: Use `pyenv init - | source` instead of `eval (pyenv init -)`.
-    - **Ubuntu and Fedora note**: Modify your `~/.bashrc` file instead of `~/.bash_profile`.
-
-    **General warning**: There are some systems where the `BASH_ENV` variable is configured
-    to point to `.bashrc`. On such systems you should almost certainly put the above mentioned line
-    `eval "$(pyenv init -)"` into `.bash_profile`, and **not** into `.bashrc`. Otherwise you
-    may observe strange behaviour, such as `pyenv` getting into an infinite loop.
-    See [#264](https://github.com/pyenv/pyenv/issues/264) for details.
-
-4. **Restart your shell so the path changes take effect.**
-   You can now begin using pyenv.
-    ```sh
-    $ exec "$SHELL"
-    ```
-
-5. **Install Python build dependencies** before attempting to install a new Python version.  The
-   [pyenv wiki](https://github.com/pyenv/pyenv/wiki) provides suggested installation packages
-   and commands for various operating systems.
-
-6. **Install Python versions into `$(pyenv root)/versions`.**
-   For example, to download and install Python 2.7.8, run:
-    ```sh
-    $ pyenv install 2.7.8
-    ```
-   **NOTE:** If you need to pass configure option to build, please use
-   ```CONFIGURE_OPTS``` environment variable.
-
-   **NOTE:** If you want to use proxy to download, please use `http_proxy` and `https_proxy`
-   environment variable.
-
-   **NOTE:** If you are having trouble installing a python version,
-   please visit the wiki page about
-   [Common Build Problems](https://github.com/pyenv/pyenv/wiki/Common-build-problems)
-
-
-#### Upgrading
-
-If you've installed pyenv using the instructions above, you can
-upgrade your installation at any time using git.
-
-To upgrade to the latest development version of pyenv, use `git pull`:
+Install [Homebrew][], which also installs the Xcode Command Line Tools if they
+are missing. Then install the packages and link Homebrew's zimfw into `~/.zim`:
 
 ```sh
-$ cd $(pyenv root)
-$ git pull
+brew install fd neovim node python ripgrep stow tmux tree-sitter-cli zimfw
+mkdir -p ~/.zim
+ln -sf "$(brew --prefix zimfw)/share/zimfw.zsh" ~/.zim/zimfw.zsh
 ```
 
-To upgrade to a specific release of pyenv, check out the corresponding tag:
+### Ubuntu
+
+Install curl and add the [NodeSource][] repository, whose `nodejs` includes
+npm. Then install the packages, link fd's `fdfind` command as `fd` and run the
+Zim Framework installer, which also makes zsh your login shell:
 
 ```sh
-$ cd $(pyenv root)
-$ git fetch
-$ git tag
-v0.1.0
-$ git checkout v0.1.0
+sudo apt update
+sudo apt install curl
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install build-essential fd-find git nodejs python3-venv ripgrep stow tmux unzip vim zsh
+sudo ln -sf "$(command -v fdfind)" /usr/local/bin/fd
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 ```
 
-### Uninstalling pyenv
+The Zim Framework installer writes its own `~/.zshrc` and moves any existing one
+to `~/.zshrc.pre-zim`. Remove `~/.zshrc` before linking `zsh`, since Stow does
+not replace existing files.
 
-The simplicity of pyenv makes it easy to temporarily disable it, or
-uninstall from the system.
+Ubuntu's Neovim package is older than 0.12 and there is no tree-sitter CLI
+package, so install [Neovim][nvim-release] from its release tarball. Then
+install Rust with [rustup][] and the [tree-sitter CLI][tree-sitter-cli] with
+Cargo.
 
-1. To **disable** pyenv managing your Python versions, simply remove the
-  `pyenv init` line from your shell startup configuration. This will
-  remove pyenv shims directory from PATH, and future invocations like
-  `python` will execute the system Python version, as before pyenv.
+[Homebrew]: https://brew.sh/
+[NodeSource]: https://github.com/nodesource/distributions
+[nvim-release]: https://github.com/neovim/neovim/releases/latest
+[rustup]: https://rustup.rs/
+[tree-sitter-cli]: https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md
 
-  `pyenv` will still be accessible on the command line, but your Python
-  apps won't be affected by version switching.
+Installation
+------------
 
-2. To completely **uninstall** pyenv, perform step (1) and then remove
-   its root directory. This will **delete all Python versions** that were
-   installed under `` $(pyenv root)/versions/ `` directory:
-    ```sh
-    rm -rf $(pyenv root)
-    ```
-   If you've installed pyenv using a package manager, as a final step
-   perform the pyenv package removal. For instance, for Homebrew:
+You need an SSH key with access to GitHub. Clone this repository to any `<path>`
+and link each `<package>` you want into `$HOME`:
 
-        brew uninstall pyenv
+```sh
+git clone git@github.com:Bonen0209/dotfiles.git <path>
+cd <path>
+stow --no-folding -v -t ~ <package>
+```
 
-Pyenv Virtualenv Installation
------------------------------
-## Installation
+Always pass `-t ~`, because Stow's default target is the repository's parent
+directory, which is `$HOME` only if you cloned it directly into `$HOME`.
+Also pass `--no-folding`, because Stow otherwise links whole directories, and
+files that programs create in them end up in this repository.
 
-### Installing as a pyenv plugin
+Before starting a new shell, make sure the local files listed above are in
+place, so they are loaded on first start.
 
-This will install the latest development version of pyenv-virtualenv into
-the `$(pyenv root)/plugins/pyenv-virtualenv` directory.
+Then start each program to install its plugins:
 
-**Important note:**  If you installed pyenv into a non-standard directory, make
-sure that you clone this repo into the 'plugins' directory of wherever you
-installed into.
+  * Start a new `zsh`. It installs the modules listed in `~/.zimrc`.
+  * Start `vim`. It installs vim-plug and then waits at a "Press ENTER" prompt.
+    Press Enter to install its plugins.
+  * Start `nvim`. It installs vim-plug, but it shows errors and installs no
+    plugins. Quit, start `nvim` again and run `:PlugInstall` to install its
+    plugins. After the next restart, it installs its language servers and
+    tree-sitter parsers in the background.
+  * Start `tmux`. It installs tpm but none of the other plugins, so press
+    `prefix + I` to install them.
 
-From inside that directory you can:
- - Check out a specific release tag.
- - Get the latest development release by running `git pull` to download the
-   latest changes.
+To unlink a package, run the link command with `-D`:
 
-1. **Check out pyenv-virtualenv into plugin directory**
+```sh
+stow --no-folding -v -D -t ~ <package>
+```
 
-    ```sh
-    $ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-    ```
-
-2. (OPTIONAL) **Add `pyenv virtualenv-init` to your shell** to enable auto-activation of virtualenvs. This is entirely optional but pretty useful. See "Activate virtualenv" below.
-
-    ```sh
-    $ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
-    ```
-
-    **Fish shell note**:  Add this to your `~/.config/fish/config.fish`
-
-    ```sh
-    status --is-interactive; and pyenv init - | source
-    status --is-interactive; and pyenv virtualenv-init - | source
-    ```
-
-    **Zsh note**: Modify your `~/.zshenv` file instead of `~/.bash_profile`.
-    
-    **Pyenv note**: You may also need to add `eval "$(pyenv init -)"` to your profile if you haven't done so already.
-
-3. **Restart your shell to enable pyenv-virtualenv**
-
-    ```sh
-    $ exec "$SHELL"
-    ```
+Stow only links and unlinks the files that are in the package when it runs.
+After pulling a change that adds a file, run the link command again. Before
+pulling a change that deletes or renames a file, unlink its package first;
+otherwise the old link is left dangling in `$HOME`.
 
 License
 -------
